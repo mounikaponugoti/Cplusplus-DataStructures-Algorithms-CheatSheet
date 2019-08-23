@@ -1,18 +1,153 @@
 <!DOCTYPE html>
 
 <style>  @import url("CSS/style.css");</style>
-<h1> std::vector </h1>
-<ul>
-  <li> Elements of the vector are stored contiguously in memory. Unlike arrays, the size of the vector is dynamic. </li>
-  <li> Vector internally uses dynamic memory buffers to store the elements. Instead of allocating new memory every time a 
-       new element is added, vector allocates additional memory and copies data to new location. </li>
-  <li> Emplace takes arguments necessary to construct an object in place, whereas insert takes reference to an object. 
-       The advantage of emplace is, it does in-place insertion and avoids an unnecessary copy of object </li>
-  <li> Note: N is the size of the container; n is the number of elements; m is the number of elements to move after deleting last element; 
-        r is the number of elements inserted/deleted.  </li>
-</ul>
+<p> <a href="#array"> std::array </a> </p>
+<p> <a href="#vector"> std::vector </a> </p>
 <html>
   <body>
+    <!-- Array -->
+    <h1> <a name="array"> </a><h1> std::array </h1>
+    <ul>
+      <li> Array elements of same type are stored contiguously in memory </li>
+      <li> Std::array satisfies the requirements of container except </li>
+        <ul> 
+          <li> The size of the array should be static i.e. default constructor without the size is not allowed </li>
+          <li> Unlike other containers, complexity of swapping two arrays is linear as this operation involves copying each element separately</li>
+        </ul>
+      </li>
+    </ul>
+    <table>
+      <!--Head of the table -->
+      <thead> 
+        <tr> 
+          <th scope="col"> Type </th> 
+          <th scope="col"> Format </th>
+          <th scope="col"> Description </th> 
+          <th scope="col"> Complexity </th> 
+        </tr> 
+      </thead>
+      <tbody>
+        <!--Constructors -->
+        <tr> 
+          <th rowspan=1 scope="row"> Constructors </th> 
+          <td> array&ltT,n&gt a</td> 
+          <td> Creates an array, a, of type T with n elements</td> 
+          <td> O(1)</td>
+        </tr>
+        
+        <!--Iterators -->
+        <tr> 
+          <th rowspan=8 scope="row"> Iterators </th> 
+          <td> a.begin()</td> 
+          <td> Returns iterator to beginning of the array</td> 
+          <td> O(1)</td>
+        </tr>
+        <tr> 
+          <td> a.end()</td> 
+          <td> Returns iterator to end of the array</td>	
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.rbegin()</td> 
+          <td> Returns reverse iterator to reverse beginning (i.e. end) of the array</td> 
+          <td> O(1)</td>
+        </tr>
+        <tr> 
+          <td> a.rend()</td> 
+          <td> Returns reverse iterator to reverse end (i.e. beginning) of the array</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.cbegin()</td> 
+          <td> Returns constant iterator to beginning of the array</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.cend()</td> 
+          <td> Returns constant iterator to end of the array</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.crbegin()</td> 
+          <td> Returns reverse constant iterator to reverse beginning of the array</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.crend()</td> 
+          <td> Returns reverse constant iterator to reverse end of the array</td> 
+          <td>O(1)</td> 
+        </tr>
+        
+        <!--Capacity -->
+        <tr> 
+          <th rowspan=3 scope="row"> Capacity</th> 
+          <td> a.size()</td> 
+          <td> Return the size of the array (number of elements)</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.max_size()</td> 
+          <td> Return the size of the array (number of elements, same as a.size())</td> 
+          <td> O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.empty()</td> 
+          <td> Test whether the array is empty are not</td> 
+          <td>O(1)</td> 
+        </tr>
+        
+        <!--Accessing elements -->
+        <tr> 
+          <th rowspan=5 scope="row"> Element Access</th> 
+          <td> a[i]</td> 
+          <td> Access the i<sup>th</sup> element of the array</td> 
+          <td> O(n)</td> 
+        </tr>
+        <tr> 
+          <td> a.at(i)</td> 
+          <td> Access the i<sup>th</sup> element of the array (automatically checks the bounds of the array)</td> 
+          <td>O(1)</td> 
+        </tr>
+        <tr> 
+          <td> a.front()</td> 
+          <td> Access the first element of the array</td> 
+          <td> O(1)</td> </tr>
+        <tr> 
+          <td> a.back()</td> 
+          <td> Access the last element of the array</td> 
+          <td> O(1)</td> </tr>
+        <tr> 
+          <td> a.data()</td> 
+          <td> Return pointer to the first element of the array</td> 
+          <td> O(1)</td> 
+        </tr>
+        
+        <!--Modifiers -->
+        <tr> 
+          <th rowspan=2 scope="row"> Modifiers</th> 
+          <td> a.fill(value)</td> 
+          <td> Fill the array with a specified value</td> 
+          <td> O(n)</td> 
+        </tr>
+        <tr> 
+          <td> a.swap(array<T>)</td> 
+          <td> Swap the content of two arrays</td> 
+          <td> O(n)</td> 
+        </tr>
+      </tbody> <!--End of the body -->
+    </table> <!--End of the table -->
+    <!-- Vector -->
+    <h1> <a name="vector"> </a> std::vector </h1>
+    <ul>
+      <li> Elements of the vector are stored contiguously in memory. Unlike arrays, the size of the vector is dynamic. </li>
+      <li> Vector internally uses dynamic memory buffers to store the elements. Instead of allocating new memory every time a 
+           new element is added, vector allocates additional memory and copies data to new location. </li>
+      <li> Emplace takes arguments necessary to construct an object in place, whereas insert takes reference to an object. 
+           The advantage of emplace is, it does in-place insertion and avoids an unnecessary copy of object </li>
+      <li> Note: N is the size of the container; n is the number of elements; m is the number of elements to move after deleting last element; 
+            r is the number of elements inserted/deleted.  </li>
+    </ul>
+    
     <table>
       <!--Head of the table -->
       <thead> 
@@ -142,12 +277,12 @@
         <tr> 
           <th rowspan=5 scope="row"> Element Access</th>  
           <td> v[i] </td>
-          <td> Access the ith element of the vector </td>
+          <td> Access the i<sup>th</sup> element of the vector </td>
           <td> O(1) </td>
         </tr>
         <tr> 
           <td> v.at(i) </td>
-          <td> Access the ith element of the array (automatically checks the boundaries) </td>
+          <td> Access the i<sup>th</sup> element of the array (automatically checks the boundaries) </td>
           <td> O(1) </td>
         </tr>
         <tr> 
@@ -245,6 +380,6 @@
         </tr>
       </tbody> <!--End of the body -->
     </table> <!--End of the table -->
-
+    
   </body>
 </html>
