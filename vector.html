@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<style>  @import url("CSS/style.css");</style>
+<h1> std::vector </h1>
+<ul>
+  <li> Elements of the vector are stored contiguously in memory. Unlike arrays, the size of the vector is dynamic. </li>
+  <li> Vector internally uses dynamic memory buffers to store the elements. Instead of allocating new memory every time a 
+       new element is added, vector allocates additional memory and copies data to new location. </li>
+  <li> Emplace takes arguments necessary to construct an object in place, whereas insert takes reference to an object. 
+       The advantage of emplace is, it does in-place insertion and avoids an unnecessary copy of object </li>
+  <li> Note: N is the size of the container; n is the number of elements; m is the number of elements to move after deleting last element; 
+        r is the number of elements inserted/deleted.  </li>
+</ul>
+<html>
+  <body>
+    <table>
+      <!--Head of the table -->
+      <thead> 
+        <tr> 
+          <th scope="col"> Type </th> 
+          <th scope="col"> Format </th>
+          <th scope="col"> Description </th> 
+          <th scope="col"> Complexity </th> 
+        </tr> 
+      </thead>
+      <tbody>
+        <!--Constructors -->
+        <tr> 
+          <th rowspan=6 scope="row"> Constructors </th> 
+          <td> vector&ltT&gt v </td>
+          <td> Create a vector, v, of type T with zero elements </td> 
+          <td> O(1) </td>
+        </tr>
+        <tr>
+          <td> vector&ltT&gt v(n) </td>
+          <td> Create a vector, v, of type T with n elements </td>
+          <td> O(n) </td>
+        </tr>
+        <tr>
+          <td> vector&ltT&gt v(n, val) </td>
+          <td> Create and initialize n elements of vector, v, of type T with value val </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> vector&ltT&gt v(begin, end)</td> 
+          <td> Create and copy the range of elements to vector v  </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> vector&ltT&gt v(v2) </td>
+          <td> Initializes the vector v with elements of vector v2 </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> vector&ltT&gt v = move(vector&ltT&gt v2) </td>
+          <td> Move the elements of vector v2 to vector v. v2 is empty after this operation. </td>
+          <td> O(1) (when both allocs are same) </td>
+        </tr>
+        
+        <!--Iterators -->
+        <tr> 
+          <th rowspan=8 scope="row"> Iterators </th> 
+          <td> v.begin() </td>
+          <td> Return iterator to beginning of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.end() </td>
+          <td> Return iterator to end of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.rbegin() </td>
+          <td> Return reverse iterator to reverse beginning (i.e. end) of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.rend() </td>
+          <td> Return reverse iterator to reverse end (i.e. beginning) of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.cbegin() </td>
+          <td> Return constant iterator to beginning of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.cend() </td>
+          <td> Return constant iterator to end of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.crbegin() </td>
+          <td> Return reverse constant iterator to reverse beginning of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.crend() </td>
+          <td> Return reverse constant iterator to reverse end of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        
+        <!--Capacity -->
+        <tr> 
+          <th rowspan=7 scope="row"> Capacity</th> 
+          <td> v.size() </td>
+          <td> Return the number of elements in the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.max_size() </td>
+          <td> Return the maximum possible size that the container can reach due to known system or library implementation limitations </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.capacity() </td>
+          <td> Return the size of currently allocated storage space i.e. size of the container </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.empty() </td>
+          <td> Test whether vector is empty or not </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.reserve(n) </td>
+          <td> Request a change in capacity to at least n elements </td>
+          <td> O(n) at most  </td>
+        </tr>
+        <tr> 
+          <td> v.resize(n) </td>
+          <td> Resize the container to hold exactly n elements </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> v.shrink_to_fit() </td>
+          <td> Request to free the unused memory </td>
+          <td> O(N) at most </td>
+        </tr>
+        
+        <!--Accessing elements -->
+        <tr> 
+          <th rowspan=5 scope="row"> Element Access</th>  
+          <td> v[i] </td>
+          <td> Access the ith element of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.at(i) </td>
+          <td> Access the ith element of the array (automatically checks the boundaries) </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.front() </td>
+          <td> Access the first element of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.back() </td>
+          <td> Access the last element of the vector </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.data() </td>
+          <td> Return pointer to the first element in the internal array used by the vector </td>
+          <td> O(1) </td>
+        </tr>
+        
+        <!--Modifiers -->
+        <tr> 
+          <th rowspan=15 scope="row"> Modifiers</th> 
+          <td> v.push_back(value) </td>
+          <td> Add the element to the end </td>
+          <td> O(1) (amortized) </td>
+        </tr>
+        <tr> 
+          <td> v.pop_back() </td>
+          <td> Remove the last element </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.erase(iterator) </td>
+          <td> Erase an element at the position pointed by the iterator </td>
+          <td> O(m) </td>
+        </tr>
+        <tr> 
+          <td> v.erase(begin, end) </td>
+          <td> Erase all the elements within the range [begin,end) </td>
+          <td> O(r+m) </td>
+        </tr>
+        <tr> 
+          <td> v.insert(iterator, value) </td>
+          <td> Insert an element before the position pointed by the iterator </td>
+          <td> O(m) </td>
+        </tr>
+        <tr> 
+          <td> v.insert(iterator, r, value)  </td>
+          <td> Insert r elements before the position pointed by the iterator and initialize with value </td>
+          <td> O(r+m) </td>
+        </tr>
+        <tr> 
+          <td> v.insert(iterator, begin, end) </td>
+          <td> Insert the range of elements before the position pointed by the iterator </td>
+          <td> O(r+m)+O(log(n)) if iterator is not forward type </td>
+        </tr>
+        <tr> 
+          <td> v.insert(iterator, initializer list) </td>
+          <td> Insert the elements from another list before the position pointed by the iterator e.g., v.insert(iterator, {1,2,3})</td>
+          <td> O(r+m)+O(log(n)) if iterator is not forward type </td>
+        </tr>
+        <tr> 
+          <td> v.swap(vector&ltT&gt v2) </td>
+          <td> Swap the elements of vector v and v2 </td>
+          <td> O(1) </td>
+        </tr>
+        <tr> 
+          <td> v.clear() </td>
+          <td> Delete all the elements of the vector </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> v.assign(begin, end) </td>
+          <td> Assign new values to the vector and resize accordingly  </td>
+          <td> O(r+n)+O(log(n)) if iterator is not forward type </td>
+        </tr>
+        <tr> 
+          <td> v.assign(n, val) </td>
+          <td> Assign new value and resize the vector size to n </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> v.assign(initializer list) </td>
+          <td> Assign n new values from another list e.g., v.assign({1,2,3}) </td>
+          <td> O(n) </td>
+        </tr>
+        <tr> 
+          <td> v.emplace(iterator, arguments) </td>
+          <td> Construct and insert a new element at a position given by the iterator </td>
+          <td> O(m) </td>
+        </tr>
+        <tr> 
+          <td> v.emplace_back(arguments) </td>
+          <td> Construct and insert a new element at the end of the vector </td>
+          <td> O(1) amortized </td>
+        </tr>
+      </tbody> <!--End of the body -->
+    </table> <!--End of the table -->
+
+  </body>
+</html>
