@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 
 <style>  @import url("CSS/style.css");</style>
-<p> <a href="#array"> std::array </a> </p>
-<p> <a href="#vector"> std::vector </a> </p>
 <html>
   <body>
+    <ul>
+      <li> <a href="#array"> std::array </a> </li>
+      <li> <a href="#vector"> std::vector </a> </li>
+      <li> <a href="#forwardlist"> std::forwardlist </a> </li>
+      <li> <a href="#list"> std::list </a> </li>
+      <li> <a href="#stack"> std::stack </a> </li>
+      <li> <a href="#queue"> std::queue </a> </li>
+      <li> <a href="#deque"> std::deque </a> </li>
+      <li> <a href="#priority_queue"> std::priority_queue </a> </li>
+      <li> <a href="#set"> std::set </a> </li>
+      <li> <a href="#multi_set"> std::multi_set </a> </li>
+      <li> <a href="#unordered_set"> std::unordered_set </a> </li>
+      <li> <a href="#map"> std::map </a> </li>
+      <li> <a href="#multimap"> std::multimap </a> </li>
+      <li> <a href="#unordered_map"> std::unordered_map </a> </li>
+    <li> <a href="#unordered_multimap"> std::unordered_multimap </a> </li>
+    </ul>
+   
+    
     <!-- Array -->
     <h1> <a name="array"> </a><h1> std::array </h1>
     <ul>
@@ -16,6 +33,7 @@
         </ul>
       </li>
     </ul>
+    
     <table>
       <!--Head of the table -->
       <thead> 
@@ -31,7 +49,7 @@
         <tr> 
           <th rowspan=1 scope="row"> Constructors </th> 
           <td> array&ltT,n&gt a</td> 
-          <td> Creates an array, a, of type T with n elements</td> 
+          <td> Create an array, a, of type T with n elements</td> 
           <td> O(1)</td>
         </tr>
         
@@ -39,12 +57,12 @@
         <tr> 
           <th rowspan=8 scope="row"> Iterators </th> 
           <td> a.begin()</td> 
-          <td> Returns iterator to beginning of the array</td> 
+          <td> Return iterator to beginning of the array</td> 
           <td> O(1)</td>
         </tr>
         <tr> 
           <td> a.end()</td> 
-          <td> Returns iterator to end of the array</td>	
+          <td> Return iterator to end of the array</td>	
           <td> O(1)</td> 
         </tr>
         <tr> 
@@ -54,27 +72,27 @@
         </tr>
         <tr> 
           <td> a.rend()</td> 
-          <td> Returns reverse iterator to reverse end (i.e. beginning) of the array</td> 
+          <td> Return reverse iterator to reverse end (i.e. beginning) of the array</td> 
           <td> O(1)</td> 
         </tr>
         <tr> 
           <td> a.cbegin()</td> 
-          <td> Returns constant iterator to beginning of the array</td> 
+          <td> Return constant iterator to beginning of the array</td> 
           <td> O(1)</td> 
         </tr>
         <tr> 
           <td> a.cend()</td> 
-          <td> Returns constant iterator to end of the array</td> 
+          <td> Return constant iterator to end of the array</td> 
           <td> O(1)</td> 
         </tr>
         <tr> 
           <td> a.crbegin()</td> 
-          <td> Returns reverse constant iterator to reverse beginning of the array</td> 
+          <td> Return reverse constant iterator to reverse beginning of the array</td> 
           <td> O(1)</td> 
         </tr>
         <tr> 
           <td> a.crend()</td> 
-          <td> Returns reverse constant iterator to reverse end of the array</td> 
+          <td> Return reverse constant iterator to reverse end of the array</td> 
           <td>O(1)</td> 
         </tr>
         
@@ -136,6 +154,7 @@
         </tr>
       </tbody> <!--End of the body -->
     </table> <!--End of the table -->
+    
     <!-- Vector -->
     <h1> <a name="vector"> </a> std::vector </h1>
     <ul>
@@ -183,7 +202,7 @@
         </tr>
         <tr> 
           <td> vector&ltT&gt v(v2) </td>
-          <td> Initializes the vector v with elements of vector v2 </td>
+          <td> Initialize the vector v with elements of vector v2 </td>
           <td> O(n) </td>
         </tr>
         <tr> 
@@ -377,6 +396,561 @@
           <td> v.emplace_back(arguments) </td>
           <td> Construct and insert a new element at the end of the vector </td>
           <td> O(1) amortized </td>
+        </tr>
+      </tbody> <!--End of the body -->
+    </table> <!--End of the table -->
+    
+    <!-- Forward list -->
+    <h1> <a name="forwardlist"> </a> std::forward_list </h1>
+    <ul>
+      <li> Forward list in C++ are implemented as a singly linked list. In singly linked list, elements are not stored consecutively in memory 
+          rather each element includes a pointer which points to the location of next element. Insert and erase operations for single element in 
+          forward list takes constant time since the pointer to the inserting and deleting position is available. </li>
+      <li> Note: n is the number of elements in the forward_list; r is the number of elements inserted/deleted/transferred; m is the number of elements 
+          in second forward_list </li>
+    </ul>
+    <table>
+      <!--Head of the table -->
+      <thead> 
+        <tr> 
+          <th scope="col"> Type </th> 
+          <th scope="col"> Format </th>
+          <th scope="col"> Description </th> 
+          <th scope="col"> Complexity </th> 
+        </tr> 
+      </thead>
+      <tbody>
+        <!--Constructors -->
+        <tr> 
+          <th rowspan=6 scope="row"> Constructors </th> 
+          <td> forward_list&ltT&gt f	</td>
+          <td> Create a forward_list, f, of type T with zero elements	</td>
+          <td> O(1) </td>
+        </tr>
+        <tr>
+          <td> forward_list&ltT&gt f(n)	</td>
+          <td> Create a forward_list, f, of type T with n elements	</td>
+          <td> O(n) </td>
+        </tr>
+        <tr>
+          <td> forward_list&ltT&gt f(n, val)	</td>
+          <td> Create and initialize n elements of type T with value val	</td>
+          <td> O(n) </td>
+        </tr>
+        <tr>
+          <td> forward_list&ltT&gt f(begin, end)	</td>
+          <td> Create and copy the range of elements to forward_list f 	</td>
+          <td> O(n) </td>
+        </tr>
+        <tr>
+          <td> forward_list&ltT&gt f(f2)	</td>
+          <td> Initializes forward_list f with elements of forward_list f2	</td>
+          <td> O(n) </td>
+        </tr>
+        <tr>
+          <td> forward_list&ltT&gt f = move(forward_list&ltT&gt f2)	</td>
+          <td> Move the elements of forward_list f2 to forward_list f. f2 is empty after this operation.	</td>
+          <td> O(1) </td>
+        </tr>
+        
+        <!--Iterators -->
+        <tr> 
+          <th rowspan=6 scope="row"> Iterators </th> 
+        	<td> f.before_begin()	</td>
+        	<td> Return iterator to before the first element of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.begin()	</td>
+        	<td> Return iterator to beginning of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.end()	</td>
+        	<td> Return iterator to end of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.cbefore_begin()	</td>
+        	<td> Return constant iterator to before the first element of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.cbegin()	</td>
+        	<td> Return constant iterator to beginning of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.cend()	</td>
+        	<td> Return constant iterator to end of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        
+        <!--Capacity -->
+        <tr> 
+          <th rowspan=2 scope="row"> Capacity</th> 
+        	<td> f.max_size()	</td>
+        	<td> Return the maximum possible size that the container can reach due to known system or library implementation limitations	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.empty()	</td>
+        	<td> Test whether forward_list is empty or not	</td>
+        	<td> O(1) </td>
+        </tr>
+        
+        <!--Accessing elements -->
+        <tr> 
+          <th rowspan=1 scope="row"> Element Access</th>  
+        	<td> f.front()	</td>
+        	<td> Return reference to the first element of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        
+        <!--Modifiers -->
+        <tr> 
+          <th rowspan=17 scope="row"> Modifiers</th> 
+        	<td> f.push_front(value)	</td>
+        	<td> Insert the element to the beginning of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.pop_front()	</td>
+        	<td> Delete the first element of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.clear()	</td>
+        	<td> Delete all the elements of the forward_list	</td>
+        	<td> O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.erase_after(iterator)	</td>
+        	<td> Erase an element at the position pointed by the iterator	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.erase_after(begin, end)	</td>
+        	<td> Erase all the elements within the range (begin, end)	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.insert_after(iterator, value)	</td>
+        	<td> Insert an element before the position pointed by the iterator	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.insert_after(iterator, r, value)	</td>
+        	<td> Insert r elements before the position pointed by the iterator and initialize with value	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.insert_after(iterator, begin, end)	</td>
+        	<td> Insert the range of elements before the position pointed by the iterator	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.insert_after(iterator, initializer list)	</td>
+        	<td> Insert the elements from another list before the position pointed by the iterator e.g., f.insert(iterator, {1,2,3}	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.assign(begin, end)	</td>
+        	<td> Assign new values to the forward_list and resize accordingly	</td>
+        	<td> O(r+n) </td>
+        </tr>
+        <tr>
+        	<td> f.assign(r, val)	</td>
+        	<td> Assign new value and resize the size to r	</td>
+        	<td> O(r+n) </td>
+        </tr>
+        <tr>
+        	<td> f.assign(initializer list)	</td>
+        	<td> Assign r new values from another list e.g., f.assign({1,2,3})	</td>
+        	<td> O(r+n) </td>
+        </tr>
+        <tr>
+        	<td> f.emplace_front(arguments)	</td>
+        	<td> Construct and insert a new element at the beginning of the forward_list	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.emplace_after(position, arguments)	</td>
+        	<td> Construct and insert a new element after the position in the forward_list	</td>
+        	<td> O(1)  </td>
+        </tr>
+        <tr>
+        	<td> f.resize(r)	</td>
+        	<td> If r is less than the size of forward_list, list is trimmed otherwise extended	</td>
+        	<td> O(r)+O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.resize(r, val)	</td>
+        	<td> If r is less than the size of forward_list, list is trimmed otherwise extended and initialized extended elements with val	</td>
+        	<td> O(r)+O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.swap(forward_list&ltT&gt f2)	</td>
+        	<td> Swap the elements of forward_list f and f2	</td>
+        	<td> O(1) </td>
+        </tr>
+        
+        <!--Operations -->
+        <tr> 
+          <th rowspan=15 scope="row"> Operations</th> 
+        	<td> f.splice_after(position, f2)	</td>
+        	<td> Transfer elements from another forward_list f2 to before the specified position	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.splice_after(position, f2, begin)	</td>
+        	<td> Transfer an element pointed by begin from forward_list f2 to before the specified position of f	</td>
+        	<td> O(1) </td>
+        </tr>
+        <tr>
+        	<td> f.splice_after(position, f2, begin, end)	</td>
+        	<td> Transfer elements in range (begin, end] from forward_list f2 to before the specified position of f	</td>
+        	<td> O(r) </td>
+        </tr>
+        <tr>
+        	<td> f.remove(val)	</td>
+        	<td> Remove all the elements which matches with val	</td>
+        	<td> O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.remove_if(condition)	</td>
+        	<td> Remove elements which fulfill the condition	</td>
+        	<td> O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.unique()	</td>
+        	<td> Remove all the duplicate values	</td>
+        	<td> O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.unique(binary_predicate)	</td>
+        	<td> Remove all the duplicate values depending on the specified function	</td>
+        	<td> O(n) </td>
+        </tr>
+        <tr>
+        	<td> f.merge(f2)	</td>
+        	<td> merge the sorted lists	</td>
+        	<td> O(m+n) </td>
+        </tr>
+        <tr>
+        	<td> f.merge(f2, compare)	</td>
+        	<td> merge the sorted lists based on the compare condition	</td>
+        	<td> O(m+n) </td>
+        </tr>
+        <tr>
+        	<td> f.sort()	</td>
+        	<td> Sort elements of the list	</td>
+        	<td> O(n log n) </td>
+        </tr>
+        <tr>
+        	<td> f.sort(compare)	</td>
+        	<td> Sort elements of the list based on the compare condition	</td>
+        	<td> O(n log n) </td>
+        </tr>
+        <tr>
+        	<td> f.reverse()	</td>
+        	<td> Reverse the order of elements	</td>
+        	<td> O(n) </td>
+        </tr>
+      </tbody> <!--End of the body -->
+    </table> <!--End of the table -->
+    
+    <!-- List -->
+    <h1> <a name="list"> </a> std::list </h1>
+    <ul>
+      <li> List in C++ are implemented as doubly linked list. In doubly linked list, elements are not stored consecutively 
+           in memory rather each element includes pointers which points to the previous and next element. Insert and erase 
+           operations for a single element in list takes constant time since the pointer to the inserting and deleting position is available. </li>
+      <li> Note: n is the number of elements in the list; r is the number of elements inserted/deleted/transferred; m is the number 
+          of elements in second </li>
+    </ul>
+    <table>
+      <!--Head of the table -->
+      <thead> 
+        <tr> 
+          <th scope="col"> Type </th> 
+          <th scope="col"> Format </th>
+          <th scope="col"> Description </th> 
+          <th scope="col"> Complexity </th> 
+        </tr> 
+      </thead>
+      <tbody>
+        <!--Constructors -->
+        <tr> 
+          <th rowspan=6 scope="row"> Constructors </th> 
+          <td> list&ltT&gtl	</td>
+          <td> Create a list, l, of type T with zero elements	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> list&ltT&gtl(n)	</td>
+          <td> Create a list, l, of type T with n elements	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> list&ltT&gtl(n, val)	</td>
+          <td> Create and initialize n elements of type T with value val	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> list&ltT&gtl(begin, end)	</td>
+          <td> Create and copy the range of elements to list l 	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> list&ltT&gtl(l2)	</td>
+          <td> Initialize list f with elements of list l2	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> list&ltT&gtl = move(list&ltT&gtl2)	</td>
+          <td> Move the elements of list l2 to list l. l2 is empty after this operation.	</td>
+          <td> O(1)</td>
+        </tr>
+        
+        <!--Iterators -->
+        <tr> 
+          <th rowspan=8 scope="row"> Iterators </th> 
+          <td> l.begin()	</td>
+          <td> Return iterator to beginning of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.end()	</td>
+          <td> Return iterator to end of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.rbegin()	</td>
+          <td> Return reverse iterator to reverse beginning (i.e. end) of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.rend()	</td>
+          <td> Return reverse iterator to reverse end (i.e. beginning) of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.cbegin()	</td>
+          <td> Return constant iterator to beginning of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.cend()	</td>
+          <td> Return constant iterator to end of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.crbegin()	</td>
+          <td> Return reverse constant iterator to reverse beginning of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.crend()	</td>
+          <td> Return reverse constant iterator to reverse end of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        
+        <!--Capacity -->
+        <tr> 
+          <th rowspan=3 scope="row"> Capacity</th> 
+          <td> l.max_size()	</td>
+          <td> Return the maximum possible size that the container can reach due to known system or library implementation limitations	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.size()	</td>
+          <td> Return the number of elements in the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.empty()	</td>
+          <td> Test whether list is empty or not	</td>
+          <td> O(1)</td>
+        </tr>
+        
+        <!--Accessing elements -->
+        <tr> 
+          <th rowspan=2 scope="row"> Element Access</th>  
+        	<td> l.front()	</td>
+          <td> Return reference to the first element of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.back()	</td>
+          <td> Return reference to the last element of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        
+        <!--Modifiers -->
+        <tr> 
+          <th rowspan=20 scope="row"> Modifiers</th> 
+          <td> l.push_front(value)	</td>
+          <td> Insert the element to the beginning of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.pop_front()	</td>
+          <td> Delete the first element of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.push_back(value)	</td>
+          <td> Insert the element to the end of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.pop_back()	</td>
+          <td> Delete the last element of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.erase(iterator)	</td>
+          <td> Erase an element at the position pointed by the iterator	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.erase(begin, end)	</td>
+          <td> Erase all the elements within the range [begin, end)	</td>
+          <td> O(r)</td>
+        </tr>
+        <tr>
+          <td> l.insert(iterator, value)	</td>
+          <td> Insert an element before the position pointed by the iterator	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.insert(iterator, r, value)	</td>
+          <td> Insert r elements before the position pointed by the iterator and initialize with value	</td>
+          <td> O(r)</td>
+        </tr>
+        <tr>
+          <td> l.insert(iterator, begin, end)	</td>
+          <td> Insert the range of elements before the position pointed by the iterator	</td>
+          <td> O(r)</td>
+        </tr>
+        <tr>
+          <td> l.insert(iterator, initializer list)	</td>
+          <td> Insert the elements from another list before the position pointed by the iterator e.g., l.insert(iterator, {1,2,3}	</td>
+          <td> O(r)</td>
+        </tr>
+        <tr>
+          <td> l.resize(r)	</td>
+          <td> If r is less than the size of list, list is trimmed otherwise extended	</td>
+          <td> O(r)+O(n)</td>
+        </tr>
+        <tr>
+          <td> l.resize(r, val)	</td>
+          <td> If r is less than the size of list, list is trimmed otherwise extended and initialized extended elements with val	</td>
+          <td> O(r)+O(n)</td>
+        </tr>
+        <tr>
+          <td> l.swap(list&ltT&gtl2)	</td>
+          <td> Swap the elements of list l and l2	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.clear()	</td>
+          <td> Delete all the elements of the list	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> l.assign(begin, end)	</td>
+          <td> Assign new values to the list and resize accordingly	</td>
+          <td> O(r+n)</td>
+        </tr>
+        <tr>
+          <td> l.assign(r, val)	</td>
+          <td> Assign new value and resize the size to r	</td>
+          <td> O(r+n)</td>
+        </tr>
+        <tr>
+          <td> l.assign(initializer list)	</td>
+          <td> Assign r new values from another list e.g., l.assign({1,2,3})	</td>
+          <td> O(r+n)</td>
+        </tr>
+        <tr>
+          <td> l.emplace_front(arguments)	</td>
+          <td> Construct and insert a new element at the beginning of the list	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.emplace_back(arguments)	</td>
+          <td> Construct and insert a new element at the end of the list	</td>
+          <td> O(1) </td>
+        </tr>
+        <tr>
+          <td> l.emplace(position, arguments)	</td>
+          <td> Construct and insert a new element at the given position of the list	</td>
+          <td> O(1) </td>
+        </tr>
+        
+        <!--Operations -->
+        <tr> 
+          <th rowspan=15 scope="row"> Operations</th> 
+        	<td> l.splice_after(position, l2)	</td>
+          <td> Transfer elements from another list l2 to before the specified position	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.splice_after(position, l2, begin)	</td>
+          <td> Transfer an element pointed by begin from list l2 to before the specified position of f	</td>
+          <td> O(1)</td>
+        </tr>
+        <tr>
+          <td> l.splice_after(position, l2, begin, end)	</td>
+          <td> Transfer elements in range (begin, end] from list l2 to before the specified position of f	</td>
+          <td> O(r)</td>
+        </tr>
+        <tr>
+          <td> l.remove(val)	</td>
+          <td> Remove all the elements which matches with val	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> l.remove_if(condition)	</td>
+          <td> Remove elements which fulfill the condition	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> l.unique()	</td>
+          <td> Remove all the duplicate values	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> l.unique(binary_predicate)	</td>
+          <td> Remove all the duplicate values depending on the specified function	</td>
+          <td> O(n)</td>
+        </tr>
+        <tr>
+          <td> l.merge(l2)	</td>
+          <td> Merge the sorted lists	</td>
+          <td> O(m+n)</td>
+        </tr>
+        <tr>
+          <td> l.merge(l2, compare)	</td>
+          <td> Merge the sorted lists based on the compare condition	</td>
+          <td> O(m+n)</td>
+        </tr>
+        <tr>
+          <td> l.sort()	</td>
+          <td> Sort elements of the list	</td>
+          <td> O(n log n)</td>
+        </tr>
+        <tr>
+          <td> l.sort(compare)	</td>
+          <td> Sort elements of the list based on the compare condition	</td>
+          <td> O(n log n)</td>
+        </tr>
+        <tr>
+          <td> l.reverse()	</td>
+          <td> Reverse the order of elements	</td>
+          <td> O(n)</td>
         </tr>
       </tbody> <!--End of the body -->
     </table> <!--End of the table -->
